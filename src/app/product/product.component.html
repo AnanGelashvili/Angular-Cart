@@ -1,0 +1,32 @@
+<div class="container">
+    <h1>Products</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Liking</th>
+                <th>Price $</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products">
+                <td>{{ product.name }}</td>
+                <td [style.color]="
+                  product.status === 'High' ? 'green' :
+                  product.status === 'Medium' ? 'orange' :
+                  'red'
+                ">
+                  {{ product.status }}
+                </td>
+                <td>{{product.price}}</td>
+                <td>
+                    <button (click)="addToCart(product)">Add to Cart</button>
+                  </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>{{ products.length }} out of {{ products.length }} products</p>
+
+    <button routerLink="/cart">Go to Cart</button>
+</div>

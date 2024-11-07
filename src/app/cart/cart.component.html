@@ -1,0 +1,21 @@
+<div class="cart-container">
+    <!-- If there are items in the cart, display them -->
+    <ul *ngIf="cartItems.length > 0; else emptyCart">
+        <li *ngFor="let item of cartItems">
+            {{ item.name }} ({{ item.price}}) <!-- Format price as currency -->
+            <button (click)="removeFromCart(item.id)">Remove</button>
+        </li>
+    </ul>
+
+    <!-- If the cart is empty, show this message -->
+    <ng-template #emptyCart>
+        <p>The cart is empty.</p>
+    </ng-template>
+
+    <!-- Display total price if cart has items -->
+    <div *ngIf="cartItems.length > 0" class="total-price">
+        <p><strong>Total Price: </strong>{{ totalPrice }} $</p> <!-- Format total price as currency -->
+    </div>
+
+    <!-- Clear Cart button -->
+</div>
